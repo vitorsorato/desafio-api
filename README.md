@@ -93,3 +93,14 @@ Este projeto foi desenvolvido como resposta ao desafio técnico da Softplan. A a
    cd ../softplan-desafio-api
    docker-compose up --build -d
    ```
+
+
+## Acesso local
+
+Após executar o Docker Compose, você pode acessar os seguintes endpoints:
+
+- **Frontend:** [http://localhost:3000](http://localhost:3000) - para acessar a aplicação frontend e suas rotas.
+- **APIs:** [http://localhost:9999](http://localhost:9999) - para acessar as APIs.
+
+Se precisar de mais informações ou ajuda, sinta-se à vontade para entrar em contato.
+
