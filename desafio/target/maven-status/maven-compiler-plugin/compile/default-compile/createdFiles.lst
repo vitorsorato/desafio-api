@@ -1,0 +1,10 @@
+com/softplan/desafio/model/Cliente.class
+com/softplan/desafio/request/TransacaoRequest.class
+com/softplan/desafio/DesafioApplication.class
+com/softplan/desafio/controller/TransacaoController.class
+com/softplan/desafio/repository/ClienteRepository.class
+com/softplan/desafio/repository/TransacaoRepository.class
+com/softplan/desafio/model/Transacao.class
+com/softplan/desafio/config/WebConfig.class
+com/softplan/desafio/service/ClienteService.class
+com/softplan/desafio/service/TransacaoService.class

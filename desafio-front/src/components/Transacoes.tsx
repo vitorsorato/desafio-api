@@ -22,8 +22,7 @@ const Transacoes: React.FC = () => {
         body: JSON.stringify({
           valor: Math.floor(Math.random() * 1000), // Valor aleatório
           tipo: 'r',
-          descricao: 'Transação de exemplo',
-          clienteId: clienteId
+          descricao: 'Transação de exemplo'
         }),
       });
 

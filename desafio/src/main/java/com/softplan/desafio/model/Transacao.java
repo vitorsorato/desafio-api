@@ -2,6 +2,7 @@ package com.softplan.desafio.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 public class Transacao {
@@ -22,6 +23,9 @@ public class Transacao {
 
     @NotNull
     private String descricao;
+
+    @Column(name = "realizada_em", nullable = false, updatable = false)
+    private LocalDateTime realizadaEm = LocalDateTime.now();
 
     // Construtor sem argumentos
     public Transacao() {
@@ -66,5 +70,13 @@ public class Transacao {
 
     public void setDescricao(@NotNull String descricao) {
         this.descricao = descricao;
+    }
+
+    public LocalDateTime getRealizadaEm() {
+        return realizadaEm;
+    }
+
+    public void setRealizadaEm(LocalDateTime realizadaEm) {
+        this.realizadaEm = realizadaEm;
     }
 }

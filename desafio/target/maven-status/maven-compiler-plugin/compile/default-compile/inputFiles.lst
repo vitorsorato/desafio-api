@@ -1,0 +1,10 @@
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/DesafioApplication.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/config/WebConfig.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/controller/TransacaoController.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/model/Cliente.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/model/Transacao.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/repository/ClienteRepository.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/repository/TransacaoRepository.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/request/TransacaoRequest.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/service/ClienteService.java
+/Users/vitorsorato/Documents/softplan/softplan-desafio-api/desafio/src/main/java/com/softplan/desafio/service/TransacaoService.java

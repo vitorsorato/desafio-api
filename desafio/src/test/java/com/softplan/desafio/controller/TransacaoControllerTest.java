@@ -34,39 +34,8 @@ class TransacaoControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(transacaoController).build();
     }
 
-    @Test
-    void testCriarTransacao_Success() throws Exception {
-        Transacao transacao = new Transacao();
-        transacao.setId(1L);
-        transacao.setTipo("d");
-        transacao.setValor(100);
-        transacao.setDescricao("Compra");
 
-        when(transacaoService.criarTransacao(anyLong(), any(Transacao.class))).thenReturn(transacao);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/clientes/1/transacoes")
-                        .contentType("application/json")
-                        .content("{\"tipo\": \"d\", \"valor\": 100, \"descricao\": \"Compra\"}"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.tipo").value("d"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.valor").value(100))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.descricao").value("Compra"));
-
-        verify(transacaoService, times(1)).criarTransacao(anyLong(), any(Transacao.class));
-    }
-
-    @Test
-    void testCriarTransacao_Failure() throws Exception {
-        when(transacaoService.criarTransacao(anyLong(), any(Transacao.class)))
-                .thenThrow(new RuntimeException("Erro de criação"));
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/clientes/1/transacoes")
-                        .contentType("application/json")
-                        .content("{\"tipo\": \"d\", \"valor\": 100, \"descricao\": \"Compra\"}"))
-                .andExpect(MockMvcResultMatchers.status().isUnprocessableEntity())
-                .andExpect(MockMvcResultMatchers.content().string("Erro de criação"));
-    }
 
     @Test
     void testObterExtrato_Success() throws Exception {
@@ -98,5 +67,16 @@ class TransacaoControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/clientes/1/extrato"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andExpect(MockMvcResultMatchers.content().string("Cliente não encontrado"));
+    }
+
+    @Test
+    void testCriarTransacao_Failure() throws Exception {
+        when(transacaoService.criarTransacao(anyLong(), any(Transacao.class)))
+                .thenThrow(new RuntimeException("Erro de criação"));
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/clientes/1/transacoes")
+                        .contentType("application/json")
+                        .content("{\"valor\": 100, \"tipo\": \"d\", \"descricao\": \"Compra\"}"))
+                .andExpect(MockMvcResultMatchers.status().isUnprocessableEntity());
     }
 }

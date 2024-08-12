@@ -19,10 +19,11 @@ CREATE TABLE transacao (
     valor INTEGER NOT NULL,
     tipo VARCHAR(1) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
+    realizada_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (cliente_id) REFERENCES cliente(id)
 );
 
-INSERT INTO transacao (cliente_id, valor, tipo, descricao)
+INSERT INTO transacao (cliente_id, valor, tipo, descricao, realizada_em)
 VALUES
-    (1, 1000, 'd', 'Exemplo de transação'),
-    (2, 500, 'c', 'Outro exemplo');
+    (1, 1000, 'd', 'Exemplo de transação', CURRENT_TIMESTAMP),
+    (2, 500, 'c', 'Outro exemplo', CURRENT_TIMESTAMP);

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -24,12 +25,8 @@ public class TransacaoController {
 
     @PostMapping("/{id}/transacoes")
     public ResponseEntity<?> criarTransacao(@PathVariable Long id, @RequestBody TransacaoRequest request) {
-        System.out.print("chegou");
-        System.out.print(id);
-        System.out.print(request);
         try {
-            Cliente cliente = clienteService.obterClientePorId(request.getClienteId());
-            System.out.print("chegou");
+            Cliente cliente = clienteService.obterClientePorId(id);
             if (cliente == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado");
             }
@@ -60,7 +57,6 @@ public class TransacaoController {
     @GetMapping
     public ResponseEntity<?> obterTodosClientes() {
         try {
-            System.out.print("chegou");
             List<Cliente> clientes = clienteService.obterTodosClientes();
             return ResponseEntity.ok(clientes);
         } catch (Exception e) {
