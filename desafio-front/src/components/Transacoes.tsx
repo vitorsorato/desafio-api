@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Button, TextField, Typography, Container } from '@mui/material';
+import { Button, TextField, Typography, Container, Snackbar, Alert } from '@mui/material';
 
 const Transacoes: React.FC = () => {
   const [clienteId, setClienteId] = useState<number | ''>('');
-  const [mensagem, setMensagem] = useState('');
+  const [mensagem, setMensagem] = useState<string>('');
+  const [openSnack, setOpenSnack] = useState<boolean>(false);
 
   const handleTransacao = async () => {
     if (clienteId === '') {
       setMensagem('Por favor, insira um ID de cliente.');
+      setOpenSnack(true);
       return;
     }
 
@@ -19,23 +21,26 @@ const Transacoes: React.FC = () => {
         },
         body: JSON.stringify({
           valor: Math.floor(Math.random() * 1000), // Valor aleatório
-          tipo: 'r', // Tipo exemplo
+          tipo: 'r',
           descricao: 'Transação de exemplo',
           clienteId: clienteId
         }),
       });
 
       if (response.ok) {
-        const data = await response.json();
         setMensagem(`Transação criada com sucesso! ID: ${clienteId}`);
-        // Envia uma mensagem para a aba /extrato
+        setOpenSnack(true);
+        
+        const dataAtual = new Date().toISOString();
         localStorage.setItem('clienteId', clienteId.toString());
-        window.open('/extrato', '_blank');
+        localStorage.setItem('transacaoAtualizada', `${clienteId.toString()}-${dataAtual}`);
       } else {
         setMensagem('Erro ao criar transação.');
+        setOpenSnack(true);
       }
     } catch (error) {
       setMensagem('Erro ao criar transação.');
+      setOpenSnack(true);
     }
   };
 
@@ -56,7 +61,14 @@ const Transacoes: React.FC = () => {
       <Button variant="contained" color="primary" onClick={handleTransacao}>
         Criar Transação
       </Button>
-      {mensagem && <Typography variant="body1" color="error" margin="normal">{mensagem}</Typography>}
+      <Snackbar
+        open={openSnack}
+        autoHideDuration={6000}
+      >
+        <Alert severity={mensagem.startsWith('Erro') ? 'error' : 'success'}>
+          {mensagem}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -43,7 +44,8 @@ public class TransacaoService {
         extrato.put("saldo", cliente.getSaldo());
         extrato.put("limite", cliente.getLimite());
         extrato.put("data_extrato", LocalDateTime.now().toString());
-        extrato.put("ultimas_transacoes", transacaoRepository.findAll());
+        List<Transacao> transacoes = transacaoRepository.findByClienteId(id);
+        extrato.put("ultimas_transacoes", transacoes);
 
         return extrato;
     }
