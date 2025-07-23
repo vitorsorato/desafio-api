@@ -1,10 +1,10 @@
-## **Desafio Técnico Softplan**
+## **Desafio Técnico **
 
 ### **Visão Geral**
 
-Este projeto foi desenvolvido como resposta ao desafio técnico da Softplan. A aplicação consiste em uma API REST em Java, frontend em React, infraestrutura com Docker compose e utilização de TDD.
+Este projeto foi desenvolvido como resposta ao desafio técnico. A aplicação consiste em uma API REST em Java, frontend em React, infraestrutura com Docker compose e utilização de TDD.
 
-![Tela Inicial](https://github.com/vitorsorato/softplan-desafio-api/blob/main/front.gif)
+![Tela Inicial](https://github.com/vitorsorato/desafio-api/blob/main/front.gif)
 
 ### **Tecnologias Utilizadas**
 * **Backend:** Java, Spring Boot, PostgreSQL
